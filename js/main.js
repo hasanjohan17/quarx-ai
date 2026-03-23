@@ -5,7 +5,7 @@
   const headerHTML = `
   <nav class="nav">
     <div class="brand">
-      <a href="./" class="site-brand" data-i18n="brand">Toolify Hub</a>
+      <a href="./" class="site-brand" data-i18n="brand">Quarx AI</a>
       <span class="muted" data-i18n="tagline">Free online tools</span>
     </div>
     <div style="display:flex;align-items:center;gap:8px">
@@ -32,7 +32,7 @@
     <div class="footer-content">
       <div class="footer-section">
         <div class="footer-branding">
-          <span data-i18n="brand">Toolify Hub</span>
+          <span data-i18n="brand">Quarx AI</span>
           <p class="footer-tagline" data-i18n="tagline">Free online tools</p>
         </div>
       </div>
@@ -53,7 +53,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; ${new Date().getFullYear()} <span data-i18n="brand">Toolify Hub</span> — All rights reserved</p>
+      <p>&copy; ${new Date().getFullYear()} <span data-i18n="brand">Quarx AI</span> — All rights reserved</p>
     </div>
   </footer>`;
 
@@ -69,11 +69,11 @@
     // i18n strings (UI only, not tool-specific names)
     const i18n = {
       en: {
-        'brand': 'Toolify Hub', 'tagline':'Free online tools',
+        'brand': 'Quarx AI', 'tagline':'Free online tools',
         'nav.home':'Home','nav.developer':'Developer','nav.daily':'Daily',
         'footer.about':'About','footer.privacy':'Privacy Policy','footer.contact':'Contact','footer.pages':'Pages','footer.categories':'Categories',
-        'about.title':'About Toolify Hub','about.lead':'Toolify Hub provides fast, privacy-friendly online utilities for developers and everyday users. We focus on speed, simplicity and reliability.',
-        'privacy.title':'Privacy Policy','privacy.lead':'This policy explains how Toolify Hub handles data and respects your privacy.',
+        'about.title':'About Quarx AI','about.lead':'Quarx AI offers fast, privacy-friendly online utilities for developers and everyday users. We focus on speed, simplicity and reliability.',
+        'privacy.title':'Privacy Policy','privacy.lead':'This policy explains how Quarx AI handles data and respects your privacy.',
         'contact.title':'Contact','contact.lead':'We\'d love to hear from you. Use the form below to send feedback or report an issue.',
         'contact.label.name':'Name','contact.label.email':'Email','contact.label.message':'Message','contact.btn.send':'Send','contact.btn.reset':'Reset',
         'contact.placeholder.name':'Your name','contact.placeholder.email':'you@example.com','contact.placeholder.message':'How can we help?',

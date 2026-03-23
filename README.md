@@ -1,4 +1,4 @@
-# Toolify Hub
+# Quarx AI
 
 🚀 **Free Online Tools Platform** - Production-ready web application with multiple utility tools, multilingual support, and responsive design.
 
@@ -33,14 +33,14 @@
 
 ## 🌐 Live Demo
 
-Visit: **[Toolify Hub on GitHub Pages](https://hasanjohan17.github.io/toolify-hub/)**
+Visit: **[Quarx AI on GitHub Pages](https://hasanjohan17.github.io/quarx-ai/)**
 
 ## 🚀 Quick Start
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/hasanjohan17/toolify-hub.git
-cd toolify-hub
+git clone https://github.com/hasanjohan17/quarx-ai.git
+cd quarx-ai
 ```
 
 2. Open in browser:
@@ -52,7 +52,7 @@ cd toolify-hub
 ## 📁 Project Structure
 
 ```
-toolify-hub/
+quarx-ai/
 ├── index.html                  # Homepage
 ├── about.html                  # About page
 ├── privacy.html                # Privacy policy
@@ -123,8 +123,8 @@ Contributions are welcome! Feel free to:
 
 ## 📧 Contact & Social
 
-- Twitter/X: [@toolifyhub](https://twitter.com/toolifyhub)
-- Email: [contact@toolifyhub.local](mailto:contact@toolifyhub.local)
+- Twitter/X: [@quarxai](https://twitter.com/quarxai)
+- Email: [contact@quarxai.local](mailto:contact@quarxai.local)
 
 ---
 
