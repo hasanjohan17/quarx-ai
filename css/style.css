@@ -11,6 +11,7 @@
   --radius:14px;
   --max-width:1200px;
   --card-shadow: 0 6px 22px rgba(15,23,42,0.08);
+  color-scheme: light;
 }
 /* Dark theme overrides */
 body[data-theme="dark"]{
@@ -23,6 +24,7 @@ body[data-theme="dark"]{
   --accent-2: #7dd3fc;
   --glass: rgba(255,255,255,0.03);
   --card-shadow: 0 12px 40px rgba(2,6,23,0.6);
+  color-scheme: dark;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
