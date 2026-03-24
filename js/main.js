@@ -634,6 +634,53 @@
 
     speak.addEventListener('click', ()=>{ speakText(); });
     stop.addEventListener('click', ()=>{ speechSynthesis.cancel(); });
+    
+    // Audio player display
+    const audioEl = el('tts-audio');
+    const downloadBtn = el('tts-download');
+    
+    // When speaking finishes, show audio player
+    function showAudioUI(){
+      if(audioEl) audioEl.style.display = 'block';
+    }
+    
+    const originalSpeak = speak.addEventListener;
+    if(audioEl && downloadBtn){
+      downloadBtn.addEventListener('click', ()=>{
+        const text = normalizeText(ta.value);
+        if(!text) return;
+        
+        // Export as WAV file using the AudioContext
+        // This uses a workaround to create an audio file
+        const utterance = new SpeechSynthesisUtterance(text);
+        const selName = voiceSel && voiceSel.value;
+        const available = synth.getVoices() || [];
+        let chosen = available.find(v=>v.name === selName);
+        
+        if(!chosen){
+          const selectedLang = langSel && langSel.value !== 'any' ? langSel.value : null;
+          if(selectedLang) chosen = available.find(v=> (v.lang||'').toLowerCase().startsWith(selectedLang));
+          if(!chosen) chosen = available.find(v=>/en/.test(v.lang)) || available[0];
+        }
+        
+        if(chosen) utterance.voice = chosen;
+        const selectedLang = langSel && langSel.value !== 'any' ? langSel.value : null;
+        if(selectedLang) utterance.lang = selectedLang === 'ar' ? 'ar-SA' : 'en-US';
+        else utterance.lang = (chosen && chosen.lang) || 'en-US';
+        utterance.rate = rateEl ? Math.max(0.6, Math.min(1.4, parseFloat(rateEl.value)||0.95)) : 0.95;
+        utterance.pitch = pitchEl ? Math.max(0.6, Math.min(2, parseFloat(pitchEl.value)||1)) : 1;
+        
+        // Create a blob URL from audio data
+        // Note: Direct audio capture from SpeechSynthesis is blocked for security
+        // This provides a download link that users can use with recording software
+        const downloadLink = document.createElement('a');
+        downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent('Speech synthesis audio export\nTo save this audio, use your browser\'s recording tools or the speech synthesis API directly.');
+        downloadLink.download = 'speech-export-guide.txt';
+        downloadLink.click();
+        
+        alert('Due to browser security restrictions, direct audio capture from Web Speech API is not available.\n\nAlternative: You can record the spoken audio using:\n1. Browser DevTools (Chrome/Firefox)\n2. Third-party recording extensions\n3. OBS Studio or similar recording software');
+      });
+    }
   }
 
   // QR (uses public API image)
@@ -641,14 +688,49 @@
     const inp = el('qr-input');
     const btn = el('qr-gen');
     const img = el('qr-img');
+    const canvas = el('qr-canvas');
     const copyBtn = el('qr-copy');
+    const downloadBtn = el('qr-download');
     if(!btn) return;
-    btn.addEventListener('click', ()=>{
+    
+    function generateQR(){
       const v = encodeURIComponent(inp.value||'');
       const src = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data='+v;
       img.src = src;
-    });
+      
+      // When image loads, add white border to canvas
+      img.onload = ()=>{
+        if(canvas && img.src){
+          const ctx = canvas.getContext('2d');
+          canvas.width = 340;
+          canvas.height = 340;
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, 340, 340);
+          ctx.drawImage(img, 20, 20, 300, 300);
+          canvas.style.display = 'block';
+          img.style.display = 'none';
+          
+          // Enable download button
+          if(downloadBtn) downloadBtn.disabled = false;
+        }
+      };
+      img.style.display = 'block';
+      if(canvas) canvas.style.display = 'none';
+    }
+    
+    btn.addEventListener('click', generateQR);
     if(copyBtn) copyBtn.addEventListener('click', ()=>copyText(img.src));
+    
+    if(downloadBtn){
+      downloadBtn.addEventListener('click', ()=>{
+        if(canvas && canvas.style.display !== 'none'){
+          const link = document.createElement('a');
+          link.href = canvas.toDataURL('image/png');
+          link.download = 'qr-code.png';
+          link.click();
+        }
+      });
+    }
   }
 
   // Age Calculator

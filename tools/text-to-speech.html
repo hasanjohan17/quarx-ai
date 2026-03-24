@@ -59,6 +59,14 @@
         <button id="tts-stop" class="btn btn-ghost" data-i18n="tts.btn.stop">Stop</button>
       </div>
     </section>
+
+    <section class="panel">
+      <label style="display:block;margin-bottom:12px">Audio Player</label>
+      <audio id="tts-audio" controls style="width:100%;margin-bottom:12px;display:none;"></audio>
+      <div class="tool-actions">
+        <button id="tts-download" class="btn btn-small" download="speech.mp3" disabled>Download Audio</button>
+      </div>
+    </section>
   </main>
   <div id="site-footer"></div>
   <script src="./js/main.js" defer></script>

@@ -35,7 +35,11 @@
     <section class="panel">
       <label data-i18n="qr.label.preview">معاينة QR</label>
       <div id="qr-preview" style="display:flex;justify-content:center;padding:12px">
-        <img id="qr-img" alt="qr" src="" loading="lazy" style="width:200px;height:200px;border-radius:8px;border:1px solid rgba(15,23,42,0.04)">
+        <canvas id="qr-canvas" width="300" height="300" style="border-radius:8px;border:1px solid rgba(15,23,42,0.04);display:none;"></canvas>
+        <img id="qr-img" alt="qr" src="" loading="lazy" style="max-width:300px;max-height:300px;border-radius:8px;border:1px solid rgba(15,23,42,0.04);">
+      </div>
+      <div class="tool-actions" style="margin-top:14px">
+        <button id="qr-download" class="btn btn-small" download="qr-code.png">تحميل صورة QR</button>
       </div>
     </section>
   </main>
