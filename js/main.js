@@ -158,7 +158,24 @@
     }
     applyLang(langPref);
     const langToggle = document.getElementById('lang-toggle');
-    if(langToggle) langToggle.addEventListener('click', ()=>{ const next = document.documentElement.lang === 'ar' ? 'en' : 'ar'; applyLang(next); localStorage.setItem('quarx-lang', next); });
+    if(langToggle) langToggle.addEventListener('click', ()=>{
+      const next = document.documentElement.lang === 'ar' ? 'en' : 'ar';
+      const currentPath = window.location.pathname;
+      let newPath = currentPath;
+      
+      if(next === 'ar' && !currentPath.includes('/ar/')) {
+        // إنجليزي → عربي: أضف /ar/
+        newPath = currentPath === '/' ? '/ar/' : '/ar' + currentPath;
+      } else if(next === 'en' && currentPath.includes('/ar/')) {
+        // عربي → إنجليزي: احذف /ar/
+        newPath = currentPath.replace('/ar/', '/');
+      }
+      
+      // احفظ اللغة المختارة
+      localStorage.setItem('quarx-lang', next);
+      // انقل للصفحة الجديدة
+      window.location.href = newPath;
+    });
     // schedule tool initializers during idle time to improve load
     function scheduleInit(fn){
       if('requestIdleCallback' in window) requestIdleCallback(fn, {timeout:1000});

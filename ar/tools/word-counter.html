@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <base href="../../">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>عداد الكلمات — Quarx AI | حساب الكلمات والأحرف عربي</title>
+  <meta name="description" content="عداد الكلمات - أداة مجانية لحساب عدد الكلمات والأحرف والسطور وتقدير وقت القراءة.">
+  <meta name="keywords" content="عداد الكلمات, حساب الكلمات, word counter, وقت القراءة">
+  <link rel="canonical" href="https://quarxai.com/ar/tools/word-counter.html">
+  <link rel="alternate" hreflang="ar" href="https://quarxai.com/ar/tools/word-counter.html">
+  <link rel="alternate" hreflang="en" href="https://quarxai.com/tools/word-counter.html">
+  <link rel="alternate" hreflang="x-default" href="https://quarxai.com/tools/word-counter.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="عداد الكلمات — Quarx AI">
+  <meta property="og:description" content="احسب عدد الكلمات والأحرف والسطور وقدر وقت القراءة.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../../favicon.png">
+  <link rel="preload" href="../../css/style.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
+</head>
+<body data-page="tool-word-counter">
+  <div id="site-header"></div>
+
+  <main class="container tool">
+    <h1 class="tool-title" data-i18n="tool.word_counter">عداد الكلمات</h1>
+    <p style="color:var(--muted)" data-i18n="wc.lead">احسب الكلمات والأحرف وقدر وقت القراءة.</p>
+
+    <section class="panel full">
+      <label for="wc-input" data-i18n="wc.label.text">النص</label>
+      <textarea id="wc-input" class="code" data-i18n-placeholder="wc.placeholder" placeholder="الصق نصك هنا..."></textarea>
+
+      <div class="wc-stats">
+        <div><strong id="wc-words">0</strong><span data-i18n="wc.stat.words">كلمات</span></div>
+        <div><strong id="wc-chars">0</strong><span data-i18n="wc.stat.chars">أحرف</span></div>
+        <div><strong id="wc-sentences">0</strong><span data-i18n="wc.stat.sentences">جمل</span></div>
+        <div><strong id="wc-time">0 دقيقة</strong><span data-i18n="wc.stat.read">قراءة</span></div>
+      </div>
+
+      <div class="tool-actions">
+        <button id="wc-copy" class="btn" data-i18n="wc.btn.copy">انسخ النص</button>
+        <button id="wc-clear" class="btn btn-ghost" data-i18n="wc.btn.clear">امسح</button>
+        <button id="wc-reset" class="btn btn-ghost" data-i18n="wc.btn.reset">حذف</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="../../js/main.js" defer></script>
+</body>
+</html>
