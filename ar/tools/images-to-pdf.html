@@ -141,15 +141,21 @@
           const pageWidth = pdf.internal.pageSize.getWidth();
           const pageHeight = pdf.internal.pageSize.getHeight();
 
+          const skippedImages = [];
+          let addedImages = 0;
           for(let i = 0; i < images.length; i++){
-            if(i > 0) pdf.addPage();
-
-            const img = await new Promise((resolve, reject) => {
-              const image = new Image();
-              image.onload = () => resolve(image);
-              image.onerror = () => reject(new Error(`فشل تحميل الصورة: ${images[i].name || i + 1}`));
-              image.src = images[i].data;
-            });
+            let img;
+            try {
+              img = await new Promise((resolve, reject) => {
+                const image = new Image();
+                image.onload = () => resolve(image);
+                image.onerror = () => reject(new Error(`فشل تحميل الصورة رقم ${i + 1}: ${images[i].name || 'صورة غير معروفة'}`));
+                image.src = images[i].data;
+              });
+            } catch (loadErr) {
+              skippedImages.push(loadErr.message);
+              continue;
+            }
 
             const imgWidth = img.naturalWidth;
             const imgHeight = img.naturalHeight;
@@ -166,7 +172,13 @@
             const x = (pageWidth - width) / 2;
             const y = (pageHeight - height) / 2;
 
+            if(addedImages > 0) pdf.addPage();
             pdf.addImage(images[i].data, 'JPEG', x, y, width, height);
+            addedImages += 1;
+          }
+
+          if(addedImages === 0){
+            throw new Error('تعذر تحميل جميع الصور المحددة.');
           }
 
           currentPdf = pdf;
@@ -178,6 +190,10 @@
           downloadBtn.style.display = 'inline-block';
           genPdfBtn.textContent = originalText;
           genPdfBtn.disabled = false;
+
+          if(skippedImages.length > 0){
+            alert(`تم تخطي بعض الصور بسبب فشل التحميل (${skippedImages.length}/${images.length}).`);
+          }
           
         } catch(err){
           console.error(err);
