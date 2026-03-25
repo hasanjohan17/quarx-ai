@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <base href="../../">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ضاغط الصور — Quarx AI | ضغط الصور أونلاين مجاناً</title>
+  <meta name="description" content="ضاغط الصور - أداة مجانية لضغط وتصغير حجم ملفات الصور بأمان بدون فقدان الجودة. Image Compressor لتحسين أداء الموقع.">
+  <meta name="keywords" content="ضاغط الصور, ضغط الصور, image compressor, تصغير الصور, تحسين الصور">
+  <meta name="language" content="ar">
+  <link rel="canonical" href="https://quarxai.com/ar/tools/image-compressor.html">
+  <link rel="icon" href="../../favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="../../favicon.png?v=2">
+  <script>!function(){var t=localStorage.getItem('devtools-theme'),e=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if('dark'===e){if(!document.documentElement.style.colorScheme)document.documentElement.style.colorScheme='dark';document.body.setAttribute('data-theme','dark')}else{document.documentElement.style.colorScheme='light';document.body.removeAttribute('data-theme')}}()</script>
+  <link rel="preload" href="../../css/style.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
+  <style>
+    .tool-actions { display: flex; gap: 8px; flex-direction: row-reverse; }
+    label { text-align: right; }
+    input[type="range"] { width: 100%; }
+    img { border-radius: 10px; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ضاغط الصور",
+    "description": "أداة ضغط الصور المجانية لتحسين أداء الموقع",
+    "url": "https://quarxai.com/ar/tools/image-compressor.html",
+    "inLanguage": "ar",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+</head>
+<body data-page="tool-image-compressor">
+  <div id="site-header"></div>
+  <main class="container tool">
+    <h1 class="tool-title">ضاغط الصور</h1>
+    <p style="color:var(--muted)">حمّل صورة واضغطها في المتصفح.</p>
+
+    <section class="panel">
+      <label for="img-file">اختر صورة</label>
+      <input id="img-file" type="file" accept="image/*">
+      <label for="quality">الجودة</label>
+      <input id="img-quality" type="range" min="10" max="100" value="80">
+      <div class="tool-actions">
+        <button id="compress-btn" class="btn">ضغط</button>
+        <a id="download-img" class="btn btn-small" href="#" download>تحميل</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <label>معاينة</label>
+      <img id="img-preview" alt="معاينة" loading="lazy" style="max-width:100%;">
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../../js/main.js" defer></script>
+</body>
+</html>

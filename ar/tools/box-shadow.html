@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <base href="../../">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>مولد ظل CSS — Quarx AI | صانع ظلال CSS Box Shadow أونلاين</title>
+  <meta name="description" content="مولد ظل CSS - أداة تفاعلية مجانية لإنشاء وتصميم ظلال CSS جميلة مع معاينة مباشرة. CSS Box Shadow Generator للمبرمجين.">
+  <meta name="keywords" content="ظل CSS, box-shadow, مولد الظلال, CSS shadow generator, صانع ظلال CSS, أداة CSS مجانية">
+  <meta name="language" content="ar">
+  <link rel="canonical" href="https://quarxai.com/ar/tools/box-shadow.html">
+  <link rel="icon" href="../../favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="../../favicon.png?v=2">
+  <script>!function(){var t=localStorage.getItem('devtools-theme'),e=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if('dark'===e){if(!document.documentElement.style.colorScheme)document.documentElement.style.colorScheme='dark';document.body.setAttribute('data-theme','dark')}else{document.documentElement.style.colorScheme='light';document.body.removeAttribute('data-theme')}}()</script>
+  <link rel="preload" href="../../css/style.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
+  <style>
+    .tool-actions { display: flex; gap: 8px; flex-direction: row-reverse; }
+    label { text-align: right; }
+    input[type="range"], input[type="color"] { width: 100%; }
+    .preview-panel { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .preview { width: 200px; height: 200px; border: 1px solid rgba(15,23,42,0.1); border-radius: 8px; margin: 20px 0; }
+    .box { width: 100px; height: 100px; background: var(--primary); border-radius: 8px; }
+    textarea { text-align: right; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "مولد ظل CSS",
+    "description": "أداة تفاعلية لإنشاء ظلال CSS جميلة مع معاينة حية",
+    "url": "https://quarxai.com/ar/tools/box-shadow.html",
+    "inLanguage": "ar",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+</head>
+<body data-page="box-shadow">
+  <div id="site-header"></div>
+
+  <main class="container tool">
+    <h1 class="tool-title">مولد ظل CSS</h1>
+    <p style="color:var(--muted)">منشئ ظلال تفاعلي مع معاينة مباشرة.</p>
+
+    <div class="tool-grid">
+      <section class="panel">
+        <label for="shadow-x">أفقي (بكسل)</label>
+        <input id="shadow-x" type="range" min="-50" max="100" value="10">
+
+        <label for="shadow-y">عمودي (بكسل)</label>
+        <input id="shadow-y" type="range" min="-50" max="100" value="10">
+
+        <label for="shadow-blur">تمويه (بكسل)</label>
+        <input id="shadow-blur" type="range" min="0" max="200" value="20">
+
+        <label for="shadow-spread">انتشار (بكسل)</label>
+        <input id="shadow-spread" type="range" min="-100" max="100" value="0">
+
+        <label for="shadow-color">لون</label>
+        <input id="shadow-color" type="color" value="#000000">
+
+        <label><input id="shadow-inset" type="checkbox"> <span>داخلي</span></label>
+
+        <div class="tool-actions">
+          <button id="copy-css" class="btn">نسخ CSS</button>
+          <button id="reset-shadow" class="btn btn-ghost">إعادة تعيين</button>
+        </div>
+      </section>
+
+      <section class="panel preview-panel">
+        <label>معاينة</label>
+        <div class="preview"><div id="preview-box" class="box"></div></div>
+        <label>مخرجات CSS</label>
+        <textarea id="css-output" class="code" readonly></textarea>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="../../js/main.js" defer></script>
+</body>
+</html>

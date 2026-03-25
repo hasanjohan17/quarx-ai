@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <base href="../../">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>محول Base64 — Quarx AI | تشفير وفك تشفير Base64 أونلاين</title>
+  <meta name="description" content="محول Base64 - أداة مجانية لتشفير وفك تشفير نصوص وملفات Base64 بسهولة. Base64 Encode Decode أداة موثوقة للمبرمجين والمطورين.">
+  <meta name="keywords" content="Base64, محول Base64, تشفير Base64, فك تشفير Base64, Base64 encoder decoder, برمجة, أدوات البرمجة">
+  <meta name="language" content="ar">
+  <link rel="canonical" href="https://quarxai.com/ar/tools/base64.html">
+  <link rel="icon" href="../../favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="../../favicon.png?v=2">
+  <script>!function(){var t=localStorage.getItem('devtools-theme'),e=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if('dark'===e){if(!document.documentElement.style.colorScheme)document.documentElement.style.colorScheme='dark';document.body.setAttribute('data-theme','dark')}else{document.documentElement.style.colorScheme='light';document.body.removeAttribute('data-theme')}}()</script>
+  <link rel="preload" href="../../css/style.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
+  <style>
+    .tool-actions { display: flex; gap: 8px; flex-direction: row-reverse; }
+    textarea { text-align: right; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "محول Base64",
+    "description": "أداة تشفير وفك تشفير Base64 مجانية للمبرمجين",
+    "url": "https://quarxai.com/ar/tools/base64.html",
+    "inLanguage": "ar",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web Browser"
+  }
+  </script>
+</head>
+<body data-page="tool-base64">
+  <div id="site-header"></div>
+  <main class="container tool">
+    <h1 class="tool-title">محول Base64</h1>
+    <p style="color:var(--muted)">شفّر النصوص إلى Base64 أو فكّ تشفير جداول Base64. معالجة آمنة في المتصفح فقط.</p>
+
+    <section class="panel">
+      <label for="b64-input">إدخال</label>
+      <textarea id="b64-input" class="code" placeholder="أدخل نصاً أو Base64"></textarea>
+      <div class="tool-actions">
+        <button id="b64-encode" class="btn">تشفير</button>
+        <button id="b64-decode" class="btn btn-ghost">فك التشفير</button>
+        <button id="b64-copy" class="btn btn-small">نسخ</button>
+        <button id="b64-reset" class="btn btn-ghost">إعادة تعيين</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <label for="b64-output">النتيجة</label>
+      <textarea id="b64-output" class="code" readonly></textarea>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../../js/main.js" defer></script>
+</body>
+</html>

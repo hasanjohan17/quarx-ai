@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <base href="../../">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>محول الوحدات — Quarx AI | تحويل وحدات الطول والوزن أونلاين</title>
+  <meta name="description" content="محول الوحدات - أداة مجانية لتحويل وحدات الطول والوزن والحرارة بسهولة. Unit Converter لتحويل القياسات بسرعة وسهولة.">
+  <meta name="keywords" content="محول الوحدات, تحويل وحدات, unit converter, تحويل قياسات, محول الطول والوزن">
+  <meta name="language" content="ar">
+  <link rel="canonical" href="https://quarxai.com/ar/tools/unit-converter.html">
+  <link rel="icon" href="../../favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="../../favicon.png?v=2">
+  <script>!function(){var t=localStorage.getItem('devtools-theme'),e=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if('dark'===e){if(!document.documentElement.style.colorScheme)document.documentElement.style.colorScheme='dark';document.body.setAttribute('data-theme','dark')}else{document.documentElement.style.colorScheme='light';document.body.removeAttribute('data-theme')}}()</script>
+  <link rel="preload" href="../../css/style.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
+  <style>
+    .tool-actions { display: flex; gap: 8px; flex-direction: row-reverse; }
+    label { text-align: right; }
+    input, select { text-align: right; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "محول الوحدات",
+    "description": "أداة تحويل الوحدات المجانية - تحويل الطول والوزن والحرارة",
+    "url": "https://quarxai.com/ar/tools/unit-converter.html",
+    "inLanguage": "ar",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+</head>
+<body data-page="tool-unit">
+  <div id="site-header"></div>
+  <main class="container tool">
+    <h1 class="tool-title">محول الوحدات</h1>
+    <p style="color:var(--muted)">حوّل بين وحدات الطول والوزن الشائعة.</p>
+
+    <section class="panel">
+      <label>النوع</label>
+      <select id="uc-type" style="padding:8px;border-radius:8px;border:1px solid rgba(15,23,42,0.04)">
+        <option value="length">الطول</option>
+        <option value="weight">الوزن</option>
+      </select>
+
+      <div style="display:flex;gap:8px;margin-top:10px;flex-direction:row-reverse">
+        <input id="uc-input" type="number" placeholder="القيمة" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(15,23,42,0.04)">
+        <select id="uc-from" style="padding:8px;border-radius:8px;border:1px solid rgba(15,23,42,0.04)"></select>
+        <select id="uc-to" style="padding:8px;border-radius:8px;border:1px solid rgba(15,23,42,0.04)"></select>
+      </div>
+      <div class="tool-actions" style="margin-top:12px">
+        <button id="uc-convert" class="btn">تحويل</button>
+        <button id="uc-copy" class="btn btn-small">نسخ</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <label>النتيجة</label>
+      <div id="uc-result" style="padding:12px;border-radius:8px;background:var(--surface);border:1px solid rgba(15,23,42,0.04);text-align: right;">—</div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../../js/main.js" defer></script>
+</body>
+</html>

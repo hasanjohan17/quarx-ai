@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <base href="../../">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ضاغط HTML — Quarx AI | تصغير ملفات HTML أونلاين</title>
+  <meta name="description" content="ضاغط HTML - أداة مجانية لتصغير ملفات HTML بإزالة التعليقات والمسافات الزائدة. HTML Minifier لتحسين أداء الموقع.">
+  <meta name="keywords" content="ضاغط HTML, تصغير HTML, HTML minifier, تحسين الأداء, ضغط ملفات HTML">
+  <meta name="language" content="ar">
+  <link rel="canonical" href="https://quarxai.com/ar/tools/html-minifier.html">
+  <link rel="icon" href="../../favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="../../favicon.png?v=2">
+  <script>!function(){var t=localStorage.getItem('devtools-theme'),e=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if('dark'===e){if(!document.documentElement.style.colorScheme)document.documentElement.style.colorScheme='dark';document.body.setAttribute('data-theme','dark')}else{document.documentElement.style.colorScheme='light';document.body.removeAttribute('data-theme')}}()</script>
+  <link rel="preload" href="../../css/style.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
+  <style>
+    .tool-actions { display: flex; gap: 8px; flex-direction: row-reverse; }
+    textarea { text-align: right; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ضاغط HTML",
+    "description": "أداة تصغير HTML مجانية لتحسين أداء الموقع",
+    "url": "https://quarxai.com/ar/tools/html-minifier.html",
+    "inLanguage": "ar",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+</head>
+<body data-page="tool-html-minifier">
+  <div id="site-header"></div>
+  <main class="container tool">
+    <h1 class="tool-title">ضاغط HTML</h1>
+    <p style="color:var(--muted)">أزل التعليقات وقلل المساحات البيضاء من كود HTML.</p>
+
+    <section class="panel">
+      <label for="html-input">إدخال HTML</label>
+      <textarea id="html-input" class="code" placeholder="ألصق كود HTML هنا"></textarea>
+      <div class="tool-actions">
+        <button id="html-minify" class="btn">تصغير</button>
+        <button id="html-copy" class="btn btn-small">نسخ</button>
+        <button id="html-reset" class="btn btn-ghost">إعادة تعيين</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <label for="html-output">النتيجة</label>
+      <textarea id="html-output" class="code" readonly></textarea>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../../js/main.js" defer></script>
+</body>
+</html>
