@@ -23,7 +23,7 @@
   <meta name="theme-color" content="#00D4D4">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <script>!function(){var t=localStorage.getItem('devtools-theme'),e=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if('dark'===e){if(!document.documentElement.style.colorScheme)document.documentElement.style.colorScheme='dark';document.body.setAttribute('data-theme','dark')}else{document.documentElement.style.colorScheme='light';document.body.removeAttribute('data-theme')}}()</script>
+  <script>!function(){var t=localStorage.getItem('devtools-theme'),e=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if('dark'===e){if(!document.documentElement.style.colorScheme)document.documentElement.style.colorScheme='dark';document.body&&document.body.setAttribute('data-theme','dark')}else{document.documentElement.style.colorScheme='light';document.body&&document.body.removeAttribute('data-theme')}}()</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -56,17 +56,17 @@
     'params' : {}
   };
 </script>
-<script src="https://www.highperformanceformat.com/6011e247242541eb02cee31ca6efcf6a/invoke.js"></script>
+
 
     <section class="hero">
       <h1 class="site-title" data-i18n="home.title">أدوات مجانية للاستخدام اليومي</h1>
-      <p class="lead" data-i18n="home.lead">Quarx AI توفر أدوات ويب مجانية وسريعة وخفيفة للمطورين والمستخدمين العاديين — كل ما تحتاجه في مكان واحد.</p>
+      <p class="lead" data-i18n="home.lead">Quarx AI توفر أدوات ويب مجانية وسريعة وخفيفة للمبرمجين والمستخدمين العاديين — كل ما تحتاجه في مكان واحد.</p>
 
       <div class="search-row" style="margin-top:14px;display:flex;gap:10px">
         <input id="tool-search" type="search" data-i18n-placeholder="home.search.placeholder" placeholder="ابحث عن أدوات (مثل json, qr, word)" aria-label="البحث عن أدوات" style="flex:1;padding:12px;border-radius:10px;border:1px solid rgba(15,23,42,0.06)">
         <select id="filter-category" style="padding:10px;border-radius:10px;border:1px solid rgba(15,23,42,0.06)">
           <option value="all" data-i18n="home.filter.all">جميع الفئات</option>
-          <option value="developer" data-i18n="home.filter.developer">أدوات المطورين</option>
+          <option value="programmer" data-i18n="home.filter.programmer">أدوات المبرمجين</option>
           <option value="daily" data-i18n="home.filter.daily">الأدوات اليومية</option>
         </select>
       </div>
@@ -75,9 +75,9 @@
     <section aria-labelledby="categories-heading">
       <h2 id="categories-heading" class="section-title">الفئات</h2>
       <div class="cards">
-        <article class="card" data-category="developer">
-          <h3 data-i18n="home.cat.developer">أدوات المطورين</h3>
-          <p data-i18n="home.cat.developer.lead">منسق JSON، ظل CSS، Base64، ضاغط HTML، مولد كلمات مرور وأكثر.</p>
+        <article class="card" data-category="programmer">
+          <h3 data-i18n="home.cat.programmer">أدوات المبرمجين</h3>
+          <p data-i18n="home.cat.programmer.lead">منسق JSON، ظل CSS، Base64، ضاغط HTML، مولد كلمات مرور وأكثر.</p>
           <a class="btn" href="./categories/developer-tools.html" data-i18n="home.browse">استعرض</a>
         </article>
 

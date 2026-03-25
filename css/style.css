@@ -73,7 +73,7 @@ label{display:block;font-size:.86rem;color:var(--muted);margin-bottom:8px}
 #site-header, #site-footer{padding:12px 18px}
 #site-header{position:sticky;top:0;background:transparent;z-index:60}
 .nav{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.nav .brand{display:flex;gap:12px;align-items:center}
+.nav .brand{display:flex;gap:12px;align-items:center;flex:1}
 .site-brand{color:var(--text);text-decoration:none;font-weight:700;font-size:1.05rem}
 .nav .muted{color:var(--muted);font-size:.9rem}
 .nav-links{display:flex;gap:14px;align-items:center}
@@ -245,6 +245,9 @@ input:focus, textarea:focus, select:focus {
 .scroll-fade.visible {
   animation: fadeInUp 0.6s ease-out forwards;
 }
+
+/* Sidebar for contact shortcuts */
+
 
 /* ensure mobile spacing */
 @media (max-width:719px){

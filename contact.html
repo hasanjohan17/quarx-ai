@@ -17,7 +17,7 @@
   <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
   <link rel="icon" href="./favicon.png?v=2" type="image/png">
   <link rel="apple-touch-icon" href="./favicon.png?v=2">
-  <script>!function(){var t=localStorage.getItem('devtools-theme'),e=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if('dark'===e){if(!document.documentElement.style.colorScheme)document.documentElement.style.colorScheme='dark';document.body.setAttribute('data-theme','dark')}else{document.documentElement.style.colorScheme='light';document.body.removeAttribute('data-theme')}}()</script>
+  <script>!function(){var t=localStorage.getItem('devtools-theme'),e=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if('dark'===e){if(!document.documentElement.style.colorScheme)document.documentElement.style.colorScheme='dark';document.body&&document.body.setAttribute('data-theme','dark')}else{document.documentElement.style.colorScheme='light';document.body&&document.body.removeAttribute('data-theme')}}()</script>
   <link rel="preload" href="./css/style.css" as="style" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="./css/style.css"></noscript>
 </head>
@@ -30,57 +30,37 @@
     </section>
 
     <section class="panel">
-      <form id="contact-form">
-        <label for="name" data-i18n="contact.label.name">Name</label>
-        <input id="name" name="name" data-i18n-placeholder="contact.placeholder.name" placeholder="Your name" />
-        <label for="email" data-i18n="contact.label.email">Email</label>
-        <input id="email" name="email" type="email" data-i18n-placeholder="contact.placeholder.email" placeholder="you@example.com" />
-        <label for="message" data-i18n="contact.label.message">Message</label>
-        <textarea id="message" name="message" rows="6" data-i18n-placeholder="contact.placeholder.message" placeholder="How can we help?"></textarea>
-        <div class="tool-actions">
-          <button type="button" id="contact-send" class="btn" data-i18n="contact.btn.send">Send</button>
-          <button type="button" id="contact-reset" class="btn btn-ghost" data-i18n="contact.btn.reset">Reset</button>
-        </div>
-      </form>
-    </section>
-
-    <section class="panel" style="margin-top:20px">
       <h3 data-i18n="contact.social.title">Connect with Us</h3>
-      <p data-i18n="contact.social.lead" style="color:var(--muted);margin-bottom:14px">You can also reach us on social media:</p>
+      <p data-i18n="contact.social.lead" style="color:var(--muted);margin-bottom:14px">You can reach us directly through:</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <a href="https://wa.me/963947530585" target="_blank" rel="noopener noreferrer" class="btn" style="gap:6px;text-decoration:none">
-          <span style="font-size:1.2rem">📱</span>
+        <a href="https://wa.me/963947530585" target="_blank" rel="noopener noreferrer" class="btn contact-no-hover" style="text-decoration:none">
           <span>WhatsApp</span>
         </a>
-        <a href="https://www.facebook.com/share/18GwveK3JB/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="gap:6px;text-decoration:none">
-          <span style="font-size:1.2rem">👍</span>
+        <a href="mailto:hasanjohan3939@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="text-decoration:none">
+          <span>Gmail</span>
+        </a>
+        <a href="https://www.facebook.com/share/18GwveK3JB/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="text-decoration:none">
           <span>Facebook</span>
         </a>
-        <a href="https://www.instagram.com/fx_7z?igsh=Z3dlbWFyZGc0MTY4" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="gap:6px;text-decoration:none">
-          <span style="font-size:1.2rem">📸</span>
+        <a href="https://www.instagram.com/fx_7z?igsh=Z3dlbWFyZGc0MTY4" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="text-decoration:none">
           <span>Instagram</span>
+        </a>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:12px">
+        <a href="./contact.html" class="btn btn-ghost" style="text-decoration:none">
+          <span>Contact Form</span>
         </a>
       </div>
     </section>
   </main>
   <footer id="site-footer"></footer>
+  <style>
+    .contact-no-hover:hover {
+      box-shadow: 0 6px 18px rgba(99,102,241,0.12) !important;
+      transform: none !important;
+    }
+  </style>
   <script src="./js/main.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      const send = document.getElementById('contact-send');
-      const reset = document.getElementById('contact-reset');
-      const form = document.getElementById('contact-form');
-      if(send){ send.addEventListener('click', ()=>{
-        // client-side demo only — open mailto with subject
-        const name = document.getElementById('name').value || 'Anonymous';
-        const email = document.getElementById('email').value || '';
-        const msg = document.getElementById('message').value || '';
-        const body = encodeURIComponent('From: '+name+' ('+email+')\n\n'+msg);
-        window.location.href = 'gmail:hasanjohan3939@gmail.com?subject='+encodeURIComponent('Feedback from '+name)+'&body='+body;
-      }); }
-      if(reset){ reset.addEventListener('click', ()=>{ form.reset(); }); }
-    });
-  </script>
 </body>
 </html>
 

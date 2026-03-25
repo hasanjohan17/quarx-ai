@@ -14,7 +14,7 @@
 
 ## 🛠️ Available Tools
 
-### Developer Tools
+### Programmer Tools
 - JSON Formatter & Validator
 - CSS Box Shadow Generator
 - Base64 Encoder/Decoder
@@ -69,7 +69,7 @@ quarx-ai/
 │   ├── qr-code.html
 │   └── ... (10 more tools)
 ├── categories/                 # Category pages
-│   ├── developer-tools.html
+│   ├── programmer-tools.html
 │   └── daily-tools.html
 ├── robots.txt                  # SEO
 ├── sitemap.xml                 # Site map
@@ -128,4 +128,4 @@ Contributions are welcome! Feel free to:
 
 ---
 
-**Made with ❤️ for developers and everyday users**
+**Made with ❤️ for programmers and everyday users**
