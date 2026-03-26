@@ -297,7 +297,8 @@
           const isArabic = document.documentElement.lang === 'ar';
           submitBtn.textContent = isArabic ? 'جاري الاشتراك...' : 'Subscribing...';
           
-          const response = await fetch('/api/newsletter', {
+          // Call serverless function that handles Brevo subscription
+          const response = await fetch('/api/subscribe', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: emailInput.value })
@@ -317,7 +318,7 @@
             submitBtn.textContent = isArabic ? '✓ تم الاشتراك!' : '✓ Subscribed!';
             setTimeout(()=>{ submitBtn.textContent = originalText; submitBtn.disabled = false; }, 3000);
           } else {
-            throw new Error(data.error || 'Failed to subscribe');
+            throw new Error(data.message || 'Failed to subscribe');
           }
         } catch(err){
           if(window.gtag){

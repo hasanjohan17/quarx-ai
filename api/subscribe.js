@@ -1,20 +1,10 @@
 export default async function handler(req, res) {
-  // Handle CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
     const { email } = req.body;
-
     if (!email || !email.includes('@')) {
       return res.status(400).json({ error: 'Invalid email address' });
     }
@@ -24,7 +14,6 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Server not configured' });
     }
 
-    // Call Brevo API
     const brevoResponse = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
@@ -41,29 +30,19 @@ export default async function handler(req, res) {
     const responseData = await brevoResponse.json();
 
     if (!brevoResponse.ok) {
-      return res.status(400).json({ 
-        error: responseData.message || 'Failed to subscribe' 
+      return res.status(400).json({
+        error: responseData.message || 'Failed to subscribe',
       });
     }
 
-    return res.status(200).json({ 
-      success: true, 
-      message: 'Successfully subscribed' 
+    return res.status(200).json({
+      success: true,
+      message: 'Successfully subscribed',
     });
-    
   } catch (error) {
-    return res.status(500).json({ 
-      error: 'Server error', 
-      message: error.message 
+    return res.status(500).json({
+      error: 'Server error',
+      message: error.message,
     });
-  }
-}
-  } catch (error) {
-    return res.status(500).json({ 
-      error: 'Server error', 
-      message: error.message 
-    });
-  }
-}
   }
 }
