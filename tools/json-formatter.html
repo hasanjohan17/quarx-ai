@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <base href="../">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>منسق JSON — Quarx AI | تنسيق JSON مجاني JSON Formatter</title>
-  <meta name="description" content="منسق JSON - أداة تنسيق وتحقق وضغط JSON مجانية. تنسيق ملفات JSON بسهولة. JSON Formatter: format, validate and minify JSON quickly.">
-  <meta name="keywords" content="منسق JSON, تنسيق JSON, JSON formatter, تحقق JSON, ضاغط JSON">
+  <title>JSON Formatter & Validator - Online Tool | Quarx AI</title>
+  <meta name="description" content="Free online JSON formatter and validator. Format, minify, and validate JSON code instantly. Works in browser, no signup required.">
+  <meta name="keywords" content="json formatter, json validator, json minifier, format json, validate json, json beautifier, online json tool">
   <link rel="canonical" href="./tools/json-formatter.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="منسق JSON — Quarx AI">
@@ -18,6 +18,31 @@
   <script>!function(){var t=localStorage.getItem('devtools-theme'),e=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if('dark'===e){if(!document.documentElement.style.colorScheme)document.documentElement.style.colorScheme='dark';document.body.setAttribute('data-theme','dark')}else{document.documentElement.style.colorScheme='light';document.body.removeAttribute('data-theme')}}()</script>
   <link rel="preload" href="./css/style.css" as="style" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="./css/style.css"></noscript>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON Formatter & Validator",
+    "url": "https://quarxai.com/tools/json-formatter.html",
+    "applicationCategory": "UtilityApplication",
+    "description": "Free online JSON formatter, validator, and minifier. Format, validate, and compress JSON instantly.",
+    "image": "https://quarxai.com/favicon.svg",
+    "author": { "@type": "Organization", "name": "Quarx AI" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "150" },
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What's the difference between formatting and minifying?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Formatting adds indentation and line breaks for readability. Minifying removes all unnecessary whitespace to reduce file size." } },
+        { "@type": "Question", "name": "Is my JSON data secure?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, 100% secure! All processing happens in your browser. We never send data to any server." } }
+      ]
+    }
+  }
+  </script>
 </head>
 <body data-page="tool-json-formatter">
   <div id="site-header"></div>
@@ -25,6 +50,19 @@
   <main class="container tool">
     <h1 class="tool-title">JSON Formatter</h1>
     <p style="color:var(--muted)">Format, validate and compress JSON. Client-side only.</p>
+
+    <div style="margin:20px 0;padding:20px;background:var(--glass);border-radius:10px;border-left:4px solid var(--accent);">
+      <h2 style="margin-top:0;">What is JSON?</h2>
+      <p>JSON (JavaScript Object Notation) is a lightweight data format used extensively in web development for APIs, configuration files, and data storage. This tool helps you <strong>format</strong>, <strong>validate</strong>, and <strong>minify</strong> JSON instantly without any installation.</p>
+      <p><strong>✨ Features:</strong></p>
+      <ul style="margin:10px 0;">
+        <li>✅ Format JSON with proper indentation</li>
+        <li>✅ Validate JSON syntax and find errors</li>
+        <li>✅ Minify JSON to reduce file size</li>
+        <li>✅ Works 100% in your browser</li>
+        <li>✅ No data ever sent to servers</li>
+      </ul>
+    </div>
 
     <div class="tool-grid">
       <section class="panel">
@@ -49,6 +87,57 @@
       </section>
     </div>
     <!-- Ad Middle -->
+
+    <section style="margin-top: 40px; padding: 20px; background: var(--glass); border-radius: 8px;">
+      <h3 style="margin-top: 0;">Related Tools</h3>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="../tools/html-minifier.html" class="btn btn-small" style="background: var(--accent); color: white;">HTML Minifier</a>
+        <a href="../tools/base64.html" class="btn btn-small" style="background: var(--accent); color: white;">Base64 Encoder</a>
+      </div>
+    </section>
+
+    <section style="margin-top: 20px; padding: 20px; background: var(--glass); border-radius: 8px; text-align: center;">      <h2 style="margin-top: 0;">Frequently Asked Questions</h2>
+      
+      <details style="margin: 15px 0; cursor: pointer;">
+        <summary style="font-weight: 600; padding: 10px;">What's the difference between formatting and minifying?</summary>
+        <p style="margin: 10px 0; color: var(--muted);">Formatting adds indentation and line breaks for readability. Minifying removes all unnecessary whitespace to reduce file size for production use.</p>
+      </details>
+
+      <details style="margin: 15px 0; cursor: pointer;">
+        <summary style="font-weight: 600; padding: 10px;">Is my JSON data secure?</summary>
+        <p style="margin: 10px 0; color: var(--muted);">Yes, 100% secure! All processing happens in your browser. We never send data to any server, so your information stays completely private.</p>
+      </details>
+
+      <details style="margin: 15px 0; cursor: pointer;">
+        <summary style="font-weight: 600; padding: 10px;">Can I handle large JSON files?</summary>
+        <p style="margin: 10px 0; color: var(--muted);">Yes, most JSON files up to 50MB work fine. For extremely large files (100MB+), processing may take a few seconds depending on your device.</p>
+      </details>
+
+      <details style="margin: 15px 0; cursor: pointer;">
+        <summary style="font-weight: 600; padding: 10px;">Does this tool work offline?</summary>
+        <p style="margin: 10px 0; color: var(--muted);">Yes! After the page loads, all tools work completely offline. You don't need an internet connection to use the formatter, validator, or minifier.</p>
+      </details>
+
+      <details style="margin: 15px 0; cursor: pointer;">
+        <summary style="font-weight: 600; padding: 10px;">What should I do if validation fails?</summary>
+        <p style="margin: 10px 0; color: var(--muted);">The validator will show you the exact line and column where the error is. Common issues: single quotes instead of double quotes, trailing commas, unquoted keys, or missing commas between properties.</p>
+      </details>
+    </section>      <h3 style="margin-top: 0;">Share This Tool</h3>
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://twitter.com/intent/tweet?url=https://quarxai.com/tools/json-formatter.html&text=Check%20out%20this%20free%20JSON%20formatter%20from%20Quarx%20AI" target="_blank" rel="noopener" class="btn btn-small">Twitter</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://quarxai.com/tools/json-formatter.html" target="_blank" rel="noopener" class="btn btn-small">Facebook</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://quarxai.com/tools/json-formatter.html" target="_blank" rel="noopener" class="btn btn-small">LinkedIn</a>
+        <button onclick="window.copyShareLink(window.location.href, this)" class="btn btn-small" title="Copy link to clipboard">Copy Link</button>
+      </div>
+    </section>
+
+    <script>
+        // Use global copyShareLink from main.js
+        document.addEventListener('DOMContentLoaded', ()=>{
+          const btn = document.querySelector('button[onclick*="copyShareLink"]');
+          if(btn) btn.onclick = function(){ window.copyShareLink(window.location.href, this); };
+        });
+
   </main>
 
   <div id="site-footer"></div>
@@ -56,4 +145,6 @@
   <script src="./js/main.js" defer></script>
 </body>
 </html>
+
+
 

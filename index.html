@@ -24,6 +24,8 @@
   <meta name="theme-color" content="#00D4D4">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="prefetch" href="./js/main.js">
+  <link rel="prefetch" href="./css/style.css">
   <script>!function(){var t=localStorage.getItem('devtools-theme'),e=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if('dark'===e){if(!document.documentElement.style.colorScheme)document.documentElement.style.colorScheme='dark';document.body&&document.body.setAttribute('data-theme','dark')}else{document.documentElement.style.colorScheme='light';document.body&&document.body.removeAttribute('data-theme')}}()</script>
   <link rel="preload" href="./css/style.css" as="style" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="./css/style.css"></noscript>
@@ -47,6 +49,24 @@
       "name": "Quarx AI"
     }
   }
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+    
+    // Track tool usage
+    window.trackToolUsage = function(toolName, action) {
+      gtag('event', 'tool_usage', {
+        'tool_name': toolName,
+        'action': action,
+        'page': document.title
+      });
+    };
   </script>
 </head>
   <body data-page="home">
@@ -77,6 +97,18 @@
           <option value="daily" data-i18n="home.filter.daily">Daily Tools</option>
         </select>
       </div>
+
+      <div id="search-results" style="display:none;margin-top:15px;position:absolute;background:var(--surface);border:1px solid var(--muted);border-radius:8px;width:100%;max-width:500px;max-height:300px;overflow-y:auto;z-index:100;box-shadow:var(--card-shadow)"></div>
+    </section>
+
+    <section style="margin: 40px 0; padding: 30px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%); border-radius: 12px; color: white; text-align: center;">
+      <h2 style="margin-top: 0;">Get Weekly Tool Tips & Updates</h2>
+      <p style="margin: 10px 0;">Subscribe to our newsletter for programming tips and tool announcements</p>
+      <form id="newsletter-signup" style="display: flex; gap: 10px; max-width: 500px; margin: 20px auto;">
+        <input type="email" placeholder="your@email.com" required style="flex: 1; padding: 12px; border-radius: 6px; border: none; background: white; color: black;"/>
+        <button type="submit" class="btn" style="background: white; color: var(--accent); font-weight: 600;">Subscribe</button>
+      </form>
+      <small style="opacity: 0.9;">No spam. Unsubscribe anytime.</small>
     </section>
 
     <section aria-labelledby="categories-heading">

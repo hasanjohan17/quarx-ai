@@ -222,6 +222,118 @@
       filterSelect.addEventListener('change', ()=>filterCards(searchInput && searchInput.value, filterSelect.value));
     }
 
+    // Contact Form Handler
+    const contactForm = document.getElementById('contact-form');
+    if(contactForm){
+      contactForm.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const statusDiv = document.getElementById('form-status');
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        
+        try {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending...';
+          statusDiv.style.display = 'block';
+          statusDiv.style.background = 'rgba(100,200,255,0.2)';
+          statusDiv.style.color = 'var(--accent)';
+          statusDiv.textContent = 'Sending your message...';
+          
+          // Use Formspree for email handling
+          const formData = new FormData(contactForm);
+          const response = await fetch('https://formspree.io/f/mrbjnnby', {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+          
+          if(response.ok){
+            // Track form submission in Google Analytics
+            if(window.gtag){
+              gtag('event', 'contact_form_submit', {
+                'form_type': 'contact',
+                'status': 'success'
+              });
+            }
+            statusDiv.style.background = 'rgba(0,200,150,0.2)';
+            statusDiv.style.color = '#00c896';
+            statusDiv.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
+            contactForm.reset();
+            setTimeout(()=>{ statusDiv.style.display = 'none'; }, 5000);
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch(err){
+          if(window.gtag){
+            gtag('event', 'contact_form_error', {
+              'form_type': 'contact',
+              'error': err.message
+            });
+          }
+          statusDiv.style.background = 'rgba(255,100,100,0.2)';
+          statusDiv.style.color = '#ff6464';
+          statusDiv.textContent = '✗ Error sending message. Please try again or contact us directly.';
+          console.error('Form error:', err);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
+    }
+
+    // Newsletter Form Handler
+    const newsletterForm = document.getElementById('newsletter-signup');
+    if(newsletterForm){
+      newsletterForm.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const emailInput = newsletterForm.querySelector('input[type="email"]');
+        const submitBtn = newsletterForm.querySelector('button[type=\"submit\"]');
+        const originalText = submitBtn.textContent;
+        
+        try {
+          submitBtn.disabled = true;
+          const isArabic = document.documentElement.lang === 'ar';
+          submitBtn.textContent = isArabic ? 'جاري الاشتراك...' : 'Subscribing...';
+          
+          const response = await fetch('/api/newsletter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: emailInput.value })
+          });
+          
+          const data = await response.json();
+          
+          if(response.ok){
+            // Track newsletter signup in Google Analytics
+            if(window.gtag){
+              gtag('event', 'newsletter_subscribe', {
+                'action': 'subscribe',
+                'email': emailInput.value
+              });
+            }
+            emailInput.value = '';
+            submitBtn.textContent = isArabic ? '✓ تم الاشتراك!' : '✓ Subscribed!';
+            setTimeout(()=>{ submitBtn.textContent = originalText; submitBtn.disabled = false; }, 3000);
+          } else {
+            throw new Error(data.error || 'Failed to subscribe');
+          }
+        } catch(err){
+          if(window.gtag){
+            gtag('event', 'newsletter_error', {
+              'action': 'subscribe',
+              'error': err.message
+            });
+          }
+          const isArabic = document.documentElement.lang === 'ar';
+          submitBtn.textContent = isArabic ? 'خطأ - حاول مجدداً' : 'Error - Try again';
+          console.error('Newsletter error:', err);
+          setTimeout(()=>{ submitBtn.textContent = originalText; submitBtn.disabled = false; }, 3000);
+        }
+      });
+    }
+
     // mobile nav toggle - ensure it works properly
     const navToggle = document.getElementById('nav-toggle');
     const navMobile = document.getElementById('nav-mobile');
@@ -714,6 +826,133 @@
     });
   }
   
+  // Tool Icons - SVG definitions
+  const TOOL_ICONS = {
+    'qr code generator': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" fill="none" stroke="currentColor"/><rect x="8" y="8" width="4" height="4" fill="currentColor"/><rect x="28" y="4" width="16" height="16" fill="none" stroke="currentColor"/><rect x="32" y="8" width="4" height="4" fill="currentColor"/><rect x="4" y="28" width="16" height="16" fill="none" stroke="currentColor"/><rect x="8" y="32" width="4" height="4" fill="currentColor"/><circle cx="36" cy="40" r="6" fill="none" stroke="currentColor"/></svg>`,
+    'image compressor': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="36" height="36" rx="3" ry="3"/><circle cx="14" cy="14" r="2.5" fill="currentColor"/><path d="M42 24l-8-8L10 42"/></svg>`,
+    'image to pdf': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M28 4H12a2 2 0 00-2 2v36a2 2 0 002 2h24a2 2 0 002-2V16z"/><polyline points="28 4 28 16 40 16"/><path d="M16 26h16M16 32h16"/></svg>`,
+    'currency converter': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="18"/><path d="M24 12v24M32 18h-8a4 4 0 000 8h8a4 4 0 000-8z" stroke="currentColor" fill="none"/></svg>`,
+    'json formatter': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 12h6M8 24h6M8 36h6M20 12h20M20 24h20M20 36h20"/><path d="M14 8v32"/></svg>`,
+    'base64': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="10" width="36" height="28" rx="2" ry="2"/><text x="14" y="30" font-size="14" font-weight="bold" fill="currentColor">B64</text></svg>`,
+    'password generator': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="20" width="36" height="20" rx="2" ry="2"/><path d="M12 20v-4a8 8 0 0124 0v4"/><circle cx="15" cy="28" r="1.5" fill="currentColor"/><circle cx="24" cy="28" r="1.5" fill="currentColor"/><circle cx="33" cy="28" r="1.5" fill="currentColor"/></svg>`,
+    'word counter': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 8h32v32H8z"/><path d="M12 16h24M12 24h24M12 32h16"/></svg>`,
+    'color generator': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="16" r="6" fill="none" stroke="currentColor"/><circle cx="10" cy="34" r="6" fill="none" stroke="currentColor"/><circle cx="38" cy="34" r="6" fill="none" stroke="currentColor"/><line x1="24" y1="22" x2="18" y2="28"/><line x1="24" y1="22" x2="30" y2="28"/></svg>`,
+    'html minifier': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="8 12 4 8 8 4"></polyline><polyline points="40 12 44 8 40 4"></polyline><line x1="24" y1="4" x2="24" y2="44"/><path d="M4 24h40"/></svg>`,
+    'box shadow': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="12" y="12" width="20" height="20" rx="2"/><rect x="14" y="14" width="16" height="16" rx="1" fill="currentColor" opacity="0.3"/></svg>`,
+    'pomodoro': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="26" r="14"/><path d="M24 12v14l6 6"/><circle cx="24" cy="4" r="1.5" fill="currentColor"/></svg>`,
+    'text to speech': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 30c-6 0-10-4-10-10V10c0-6 4-10 10-10s10 4 10 10v10c0 6-4 10-10 10z"/><path d="M12 44c-6 0-10-4-10-10s4-10 10-10 10 4 10 10-4 10-10 10z" fill="currentColor" opacity="0.3"/></svg>`,
+    'unit converter': `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h36M6 40h36M10 12v24M20 12v24M30 12v24M40 12v24M4 8v32a2 2 0 002 2h32a2 2 0 002-2V8"/></svg>`
+  };
+
+  // Render icons on tool cards
+  function renderToolIcons(){
+    document.querySelectorAll('[data-tags]').forEach(card => {
+      if(card.querySelector('.tool-icon')) return; // already added
+      const title = card.querySelector('h3')?.textContent?.toLowerCase() || '';
+      let iconSVG = null;
+      for(const [name, svg] of Object.entries(TOOL_ICONS)){
+        if(title.includes(name.split(' ')[0])){
+          iconSVG = svg;
+          break;
+        }
+      }
+      if(iconSVG){
+        const iconDiv = document.createElement('div');
+        iconDiv.className = 'tool-icon';
+        iconDiv.innerHTML = iconSVG;
+        iconDiv.style.cssText = 'width:48px;height:48px;margin:0 auto 12px;color:var(--accent);display:flex;align-items:center;justify-content:center;opacity:0.8;transition:opacity 0.2s;';
+        card.insertBefore(iconDiv, card.querySelector('h3'));
+        // hover effect
+        card.addEventListener('mouseenter', ()=>iconDiv.style.opacity='1');
+        card.addEventListener('mouseleave', ()=>iconDiv.style.opacity='0.8');
+      }
+    });
+  }
+  scheduleInit(renderToolIcons);
+
+  // Copy Share Link Function - works globally with any URL
+  window.copyShareLink = function(url, btn){
+    // Determine URL to copy
+    const urlToCopy = url || window.location.href;
+    const button = btn || (event && event.target) || null;
+    
+    navigator.clipboard.writeText(urlToCopy).then(()=>{
+      // Visual feedback with button text change if button element provided
+      if(button && button.textContent !== undefined){
+        const originalText = button.textContent;
+        button.textContent = '✓ تم النسخ!' || 'Copied!';
+        setTimeout(()=>{ button.textContent = originalText; }, 2000);
+      } else {
+        // Fallback to alert if no button
+        const msg = urlToCopy.includes('ar') ? 'تم نسخ الرابط!' : 'Link copied!';
+        alert(msg);
+      }
+    }).catch(err=>{
+      // Fallback for browsers that don't support clipboard API
+      const textArea = document.createElement("textarea");
+      textArea.value = urlToCopy;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      if(button && button.textContent !== undefined){
+        const originalText = button.textContent;
+        button.textContent = '✓ تم النسخ!' || 'Copied!';
+        setTimeout(()=>{ button.textContent = originalText; }, 2000);
+      } else {
+        const msg = urlToCopy.includes('ar') ? 'تم نسخ الرابط!' : 'Link copied!';
+        alert(msg);
+      }
+    });
+  };
+
+  // Performance Monitoring
+  window.perfMetrics = {};
+  if(window.performance && window.performance.timing){
+    window.addEventListener('load', ()=>{
+      const timing = window.performance.timing;
+      const loadTime = timing.loadEventEnd - timing.navigationStart;
+      const domReady = timing.domContentLoadedEventEnd - timing.navigationStart;
+      window.perfMetrics = {
+        pageLoadTime: loadTime,
+        domReadyTime: domReady,
+        renderTime: timing.domInteractive - timing.navigationStart
+      };
+      // Optional: Send to analytics
+      if(window.gtag){
+        gtag('event', 'page_load_performance', {
+          'load_time': loadTime,
+          'dom_ready': domReady
+        });
+      }
+    });
+  }
+
+  // Lazy Loading Enhancement
+  function initLazyLoading(){
+    if('IntersectionObserver' in window){
+      const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+      if(lazyImages.length > 0){
+        const imageObserver = new IntersectionObserver((entries, observer)=>{
+          entries.forEach(entry=>{
+            if(entry.isIntersecting){
+              const img = entry.target;
+              img.src = img.dataset.src || img.src;
+              img.classList.add('loaded');
+              observer.unobserve(img);
+            }
+          });
+        });
+        lazyImages.forEach(img => imageObserver.observe(img));
+      }
+    }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initLazyLoading);
+  } else {
+    initLazyLoading();
+  }
+
   // Initialize scroll animations after DOM is ready
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', initScrollAnimations);

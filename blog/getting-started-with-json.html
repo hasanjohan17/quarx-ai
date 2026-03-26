@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <base href="../">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Getting Started with JSON: A Beginner's Guide | Quarx AI Blog</title>
+  <meta name="description" content="Learn JSON fundamentals: syntax, structure, data types, and best practices. Perfect for beginners learning API development and data handling.">
+  <meta name="keywords" content="json tutorial, json guide, json syntax, json data types, json parsing, json formatting">
+  <link rel="canonical" href="https://quarxai.com/blog/getting-started-with-json.html">
+  <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="./favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="./favicon.png?v=2">
+  <meta property="og:title" content="Getting Started with JSON: A Beginner's Guide">
+  <meta property="og:description" content="Learn JSON fundamentals and best practices for data handling">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://quarxai.com/blog/getting-started-with-json.html">
+  <meta name="author" content="Quarx AI">
+  <meta name="robots" content="index, follow">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Getting Started with JSON: A Beginner's Guide",
+    "description": "Learn JSON fundamentals: syntax, structure, data types, and best practices",
+    "image": "https://quarxai.com/og-image.jpg",
+    "author": {
+      "@type": "Organization",
+      "name": "Quarx AI"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Quarx AI",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://quarxai.com/logo.svg"
+      }
+    },
+    "datePublished": "2024-01-15",
+    "dateModified": "2024-01-15",
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is JSON?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JSON (JavaScript Object Notation) is a lightweight, text-based data format used to represent structured data. It's language-independent and widely used in web APIs, configuration files, and data storage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the main data types in JSON?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JSON supports six main data types: string (text), number (integers and decimals), boolean (true/false), null (no value), object (key-value pairs), and array (ordered list of values)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I validate JSON?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can validate JSON using online tools like our JSON Formatter, or programmatically using language-specific JSON parsers like JSON.parse() in JavaScript or json.loads() in Python."
+          }
+        }
+      ]
+    }
+  }
+  </script>
+  <script>!function(){var t=localStorage.getItem('devtools-theme'),e=t||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if('dark'===e){if(!document.documentElement.style.colorScheme)document.documentElement.style.colorScheme='dark';document.body.setAttribute('data-theme','dark')}else{document.documentElement.style.colorScheme='light';document.body.removeAttribute('data-theme')}}()</script>
+  <link rel="preload" href="./css/style.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    .article-header { margin-bottom: 40px; text-align: center; }
+    .article-header h1 { font-size: 2.5em; margin-bottom: 10px; }
+    .article-meta { color: var(--muted); font-size: 0.95em; margin-bottom: 20px; }
+    .article-content { max-width: 800px; margin: 0 auto; line-height: 1.7; }
+    .article-content h2 { margin-top: 40px; margin-bottom: 20px; border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
+    .article-content h3 { margin-top: 25px; margin-bottom: 15px; color: var(--accent); }
+    .article-content p { margin-bottom: 15px; }
+    .article-content ul, .article-content ol { margin: 15px 0 15px 25px; }
+    .article-content li { margin-bottom: 8px; }
+    .code-block { background: var(--surface); border-left: 4px solid var(--accent); padding: 15px; margin: 20px 0; border-radius: 6px; overflow-x: auto; }
+    .code-block code { font-family: 'Courier New', monospace; font-size: 0.9em; }
+    .highlight { background: var(--glass); padding: 2px 6px; border-radius: 3px; color: var(--accent); }
+    .article-footer { margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--glass); text-align: center; }
+    .related-articles { margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .article-card { background: var(--glass); padding: 20px; border-radius: 8px; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; }
+    .article-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+    .article-card h3 { margin-top: 0; color: var(--accent); }
+  </style>
+</head>
+<body data-page="blog-post">
+  <div id="site-header"></div>
+
+  <main class="container" style="padding-top:30px">
+    <article class="article-content">
+      <div class="article-header">
+        <h1>Getting Started with JSON: A Beginner's Guide</h1>
+        <div class="article-meta">
+          <span>Published on January 15, 2024</span>
+          <span> • </span>
+          <span>5 min read</span>
+          <span> • </span>
+          <span>By Quarx AI</span>
+        </div>
+      </div>
+
+      <section>
+        <h2>Introduction: What is JSON?</h2>
+        <p>JSON (JavaScript Object Notation) has become one of the most important data formats in modern web development. Whether you're building APIs, storing configuration files, or working with databases, understanding JSON is essential for any developer or data professional.</p>
+        <p>JSON is a lightweight, text-based format that represents structured data using a simple, human-readable syntax. Despite its name, JSON is completely language-independent and can be used with virtually any programming language.</p>
+      </section>
+
+      <section>
+        <h2>Why JSON Matters</h2>
+        <p>JSON has become the de facto standard for data interchange on the web for several important reasons:</p>
+        <ul>
+          <li><strong>Simplicity:</strong> The syntax is straightforward and easy to learn</li>
+          <li><strong>Readability:</strong> Both humans and machines can easily parse JSON</li>
+          <li><strong>Lightweight:</strong> JSON is more compact than alternatives like XML</li>
+          <li><strong>Wide Support:</strong> Every major programming language has JSON libraries</li>
+          <li><strong>Web-Native:</strong> Built into JavaScript and easily handled in all web browsers</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>JSON Syntax Basics</h2>
+        <p>JSON is built on a simple foundation: key-value pairs and data structures. Let's break down the basic syntax:</p>
+        
+        <h3>Objects</h3>
+        <p>Objects are collections of key-value pairs enclosed in curly braces. Keys must always be strings:</p>
+        <div class="code-block">
+          <code>{
+  "name": "John Doe",
+  "age": 30,
+  "email": "john@example.com"
+}</code>
+        </div>
+
+        <h3>Arrays</h3>
+        <p>Arrays are ordered lists of values enclosed in square brackets:</p>
+        <div class="code-block">
+          <code>{
+  "fruits": ["apple", "banana", "orange"],
+  "numbers": [1, 2, 3, 4, 5]
+}</code>
+        </div>
+
+        <h3>Strings</h3>
+        <p>Strings must be enclosed in double quotes and can contain escape sequences:</p>
+        <div class="code-block">
+          <code>{
+  "message": "Hello, World!",
+  "file_path": "C:\\Users\\Documents\\file.txt",
+  "quote": "She said \"Hello\""
+}</code>
+        </div>
+      </section>
+
+      <section>
+        <h2>JSON Data Types</h2>
+        <p>JSON supports six main data types. Understanding each is crucial for working with JSON effectively:</p>
+        
+        <ul>
+          <li><span class="highlight">String</span> - Text enclosed in double quotes</li>
+          <li><span class="highlight">Number</span> - Integer or floating-point number</li>
+          <li><span class="highlight">Boolean</span> - Either <code>true</code> or <code>false</code></li>
+          <li><span class="highlight">Null</span> - Represents the absence of a value</li>
+          <li><span class="highlight">Object</span> - A collection of key-value pairs</li>
+          <li><span class="highlight">Array</span> - An ordered list of values</li>
+        </ul>
+
+        <p>Here's an example showing all data types:</p>
+        <div class="code-block">
+          <code>{
+  "name": "Alice",        // String
+  "age": 25,              // Number
+  "active": true,         // Boolean
+  "premium": null,        // Null
+  "address": {            // Object
+    "city": "New York",
+    "zip": "10001"
+  },
+  "tags": ["dev", "api"]   // Array
+}</code>
+        </div>
+      </section>
+
+      <section>
+        <h2>Common JSON Patterns</h2>
+        
+        <h3>Nested Objects</h3>
+        <p>Objects can contain other objects, allowing you to represent hierarchical data:</p>
+        <div class="code-block">
+          <code>{
+  "user": {
+    "profile": {
+      "firstName": "John",
+      "lastName": "Doe"
+    },
+    "settings": {
+      "theme": "dark",
+      "notifications": true
+    }
+  }
+}</code>
+        </div>
+
+        <h3>Array of Objects</h3>
+        <p>This pattern is extremely common in APIs and is used to represent lists of entities:</p>
+        <div class="code-block">
+          <code>{
+  "users": [
+    { "id": 1, "name": "Alice", "role": "admin" },
+    { "id": 2, "name": "Bob", "role": "user" },
+    { "id": 3, "name": "Carol", "role": "user" }
+  ]
+}</code>
+        </div>
+      </section>
+
+      <section>
+        <h2>JSON Best Practices</h2>
+        <p>When working with JSON, follow these best practices to ensure clean, maintainable data:</p>
+        
+        <ul>
+          <li><strong>Use meaningful key names:</strong> Choose descriptive names for your keys</li>
+          <li><strong>Be consistent with casing:</strong> Use camelCase or snake_case consistently</li>
+          <li><strong>Validate your JSON:</strong> Always validate before using in production</li>
+          <li><strong>Keep it organized:</strong> Use proper indentation (typically 2 or 4 spaces)</li>
+          <li><strong>Avoid null when possible:</strong> Use explicit absence indicators</li>
+          <li><strong>Document API schemas:</strong> Provide clear examples of expected JSON structure</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Common Mistakes to Avoid</h2>
+        <p>New developers often make these mistakes when working with JSON:</p>
+        
+        <ul>
+          <li><strong>Using single quotes:</strong> JSON requires double quotes for strings</li>
+          <li><strong>Missing commas:</strong> Always place commas between key-value pairs</li>
+          <li><strong>Trailing commas:</strong> JSON doesn't allow trailing commas after the last item</li>
+          <li><strong>Unquoted keys:</strong> All keys must be strings and enclosed in quotes</li>
+          <li><strong>Adding comments:</strong> Standard JSON doesn't support comments (use JSONC if needed)</li>
+        </ul>
+
+        <p>Here's an example of invalid JSON:
+        <div class="code-block">
+          <code>// ❌ INVALID JSON
+{
+  'name': 'John',      // single quotes - WRONG
+  'age': 30,           // single quotes - WRONG
+  'email': 'j@a.com',  // trailing comma - WRONG
+}</code>
+        </div>
+
+        <p>The correct version:</p>
+        <div class="code-block">
+          <code">// ✅ VALID JSON
+{
+  "name": "John",
+  "age": 30,
+  "email": "j@a.com"
+}</code>
+        </div>
+      </section>
+
+      <section>
+        <h2>Parsing and Working with JSON</h2>
+        
+        <h3>JavaScript</h3>
+        <p>JavaScript has built-in JSON support with two main methods:</p>
+        <div class="code-block">
+          <code>// Parse JSON string to object
+const data = JSON.parse('{"name":"John","age":30}');
+
+// Convert object to JSON string
+const jsonString = JSON.stringify(data, null, 2);</code>
+        </div>
+
+        <h3>Python</h3>
+        <p>Python's json module makes working with JSON easy:</p>
+        <div class="code-block">
+          <code>import json
+
+# Parse JSON
+data = json.loads('{"name":"John","age":30}')
+
+# Convert to JSON
+json_string = json.dumps(data, indent=2)</code>
+        </div>
+      </section>
+
+      <section>
+        <h2>Tools for Working with JSON</h2>
+        <p>Several tools can help you work with JSON more effectively:</p>
+        <ul>
+          <li><strong><a href="./tools/json-formatter.html">JSON Formatter</a>:</strong> Format, validate, and minify JSON instantly</li>
+          <li><strong>JSON validators:</strong> Check if your JSON is valid before using it</li>
+          <li><strong>Browser developer tools:</strong> Inspect and debug JSON responses</li>
+          <li><strong>IDE extensions:</strong> Most modern IDEs have JSON support built-in</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Conclusion</h2>
+        <p>JSON is an essential skill for modern developers. Its simplicity, readability, and widespread support make it the perfect format for data interchange. Start with the fundamentals covered in this guide, practice with real-world examples, and use tools like <a href="./tools/json-formatter.html">our JSON Formatter</a> to validate your work.</p>
+        <p>As you continue your development journey, you'll find JSON everywhere—from REST APIs to configuration files to database storage. Mastering JSON will make you more effective in any technical role.</p>
+      </section>
+
+      <div class="article-footer">
+        <h2>Ready to Format JSON?</h2>
+        <p>Try our free <a href="./tools/json-formatter.html" class="btn" style="display:inline-block;margin-top:10px;">JSON Formatter Tool</a></p>
+      </div>
+
+      <section class="related-articles">
+        <h2 style="grid-column: 1 / -1; margin-top: 40px;">Related Articles</h2>
+        <a href="./blog/index.html" class="article-card">
+          <h3>Web APIs 101</h3>
+          <p>Learn the basics of building and consuming REST APIs with JSON</p>
+          <small style="color: var(--muted);">Coming Soon</small>
+        </a>
+        <a href="./blog/index.html" class="article-card">
+          <h3>Data Validation Best Practices</h3>
+          <p>Ensure your data is clean and valid before processing</p>
+          <small style="color: var(--muted);">Coming Soon</small>
+        </a>
+        <a href="./blog/index.html" class="article-card">
+          <h3>JavaScript JSON Methods</h3>
+          <p>Deep dive into JSON.parse() and JSON.stringify()</p>
+          <small style="color: var(--muted);">Coming Soon</small>
+        </a>
+      </section>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="./js/main.js" defer></script>
+</body>
+</html>

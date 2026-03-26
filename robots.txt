@@ -1,3 +1,24 @@
 User-agent: *
 Allow: /
-Sitemap: /sitemap.xml
+Allow: /tools/
+Allow: /categories/
+Allow: /blog/
+Allow: /ar/
+Disallow: /admin/
+Disallow: /private/
+
+# AdSense and ad networks
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemap locations
+Sitemap: https://quarxai.com/sitemap.xml
