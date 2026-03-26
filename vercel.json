@@ -1,10 +1,4 @@
 {
-  "outputDirectory": ".",
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "headers": [
     {
       "source": "/js/main.js",
@@ -85,12 +79,6 @@
           "value": "public, max-age=86400"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/:path(.*)",
-      "destination": "/api/:path*"
     }
   ]
 }
