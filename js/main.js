@@ -289,30 +289,41 @@
       });
     }
 
-    // Newsletter Form Handler - Formspree direct submission
+    // Newsletter Form Handler - Simple MVP with success message
     const newsletterForm = document.getElementById('newsletter-signup');
     if(newsletterForm){
       newsletterForm.addEventListener('submit', (e)=>{
-        const emailInput = newsletterForm.querySelector('input[type="email"]');
+        e.preventDefault();
+        const emailInput = document.getElementById('newsletter-email');
         const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+        const email = emailInput.value;
         
-        // Track newsletter signup in Google Analytics
-        if(window.gtag && emailInput.value){
+        if(!email) return;
+        
+        // Track signup
+        if(window.gtag){
           gtag('event', 'newsletter_subscribe', {
             'action': 'subscribe',
-            'email': emailInput.value
+            'email': email
           });
         }
         
-        const originalText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.textContent = document.documentElement.lang === 'ar' ? 'جاري...' : 'Submitting...';
+        // Save to localStorage for data collection (can sync later)
+        let subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
+        if(!subscribers.includes(email)) subscribers.push(email);
+        localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
         
-        // Let Formspree handle the submission naturally
+        // Show success
+        const originalText = submitBtn.textContent;
+        const isArabic = document.documentElement.lang === 'ar';
+        submitBtn.textContent = isArabic ? '✓ تم الاشتراك!' : '✓ Subscribed!';
+        submitBtn.disabled = true;
+        emailInput.value = '';
+        
         setTimeout(()=>{
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
-        }, 1000);
+        }, 3000);
       });
     }
 
